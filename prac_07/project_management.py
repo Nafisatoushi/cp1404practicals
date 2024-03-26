@@ -11,7 +11,13 @@ def load_projects(filename="projects.txt"):
             name, start_date, priority, cost_estimate, completion_percentage = row
             projects.append(Project(name, start_date, int(priority), float(cost_estimate), int(completion_percentage)))
     return projects
-
+def save_projects(projects, filename="projects.txt"):
+    """Save projects to the specified file."""
+    with open(filename, "w", newline="") as file:
+        writer = csv.writer(file, delimiter="\t")
+        writer.writerow(["Name", "Start Date", "Priority", "Cost Estimate", "Completion Percentage"])
+        for project in projects:
+            writer.writerow([project.name, project.start_date, project.priority, project.cost_estimate, project.completion_percentage])
 def main():
     """Main function to manage projects."""
     print("Welcome to Pythonic Project Management")
