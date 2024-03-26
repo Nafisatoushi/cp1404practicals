@@ -1,38 +1,45 @@
 from guitar import Guitar
 import csv
 
-def load_guitars(file_name):
+def load_guitars_from_file(filename):
     """Load guitars from a CSV file and return a list of Guitar objects."""
     guitars = []
-    with open(file_name, 'r') as file:
+    with open(filename, 'r') as file:
         reader = csv.reader(file)
-        for line in reader:
-            name, year, cost = line
-            year = int(year)
-            cost = float(cost)
-            guitars.append(Guitar(name, year, cost))
+        for row in reader:
+            name, year, cost = row
+            guitars.append(Guitar(name, int(year), float(cost)))
     return guitars
 
-def display_guitars(guitars):
-    """Display details of guitars in a list."""
-    print("My Guitars:")
-    for i, guitar in enumerate(guitars, 1):
-        print(f"Guitar {i}: {guitar}")
+def write_guitars_to_file(filename, guitars):
+    """Write guitars to a CSV file."""
+    with open(filename, 'w', newline='') as file:
+        writer = csv.writer(file)
+        for guitar in guitars:
+            writer.writerow([guitar.name, guitar.year, guitar.cost])
 
-def sort_guitars_by_year(guitars):
-    """Sort guitars by year."""
-    guitars.sort()
+def add_new_guitar(guitars):
+    """Add a new guitar to the list."""
+    name = input("Enter the name of the guitar: ")
+    year = int(input("Enter the year of manufacture: "))
+    cost = float(input("Enter the cost of the guitar: "))
+    guitars.append(Guitar(name, year, cost))
 
 def main():
-    # Load guitars from the CSV file
-    guitars = load_guitars("guitars.csv")
+    # Load existing guitars from the file
+    filename = 'guitars.csv'
+    guitars = load_guitars_from_file(filename)
 
-    # Display unsorted guitars
-    display_guitars(guitars)
+    # Display existing guitars
+    print("Existing guitars:")
+    for guitar in guitars:
+        print(guitar)
 
-    # Sort guitars by year and display sorted list
-    sort_guitars_by_year(guitars)
-    print("\nSorted Guitars:")
-    display_guitars(guitars)
+    # Add a new guitar
+    add_new_guitar(guitars)
+
+    # Write all guitars to the file
+    write_guitars_to_file(filename, guitars)
+    print("New guitar added and saved to file.")
 
 main()
