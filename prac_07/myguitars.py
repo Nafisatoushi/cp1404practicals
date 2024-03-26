@@ -1,41 +1,28 @@
 # Importing necessary classes and modules
 from guitar import Guitar
-import csv
 
-# Function to load guitars from the CSV file
-def load_guitars_from_file(filename):
+
+def load_guitars_from_file(file_name):
+    """Load guitars from a file and return a list of Guitar objects."""
     guitars = []
-    with open(filename, 'r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            name, year, cost = row
-            guitars.append(Guitar(name, int(year), float(cost)))
+    try:
+        with open(file_name, 'r') as file:
+            for line in file:
+                parts = line.strip().split(',')
+                name = parts[0]
+                year = int(parts[1])
+                cost = float(parts[2])
+                guitar = Guitar(name, year, cost)
+                guitars.append(guitar)
+    except FileNotFoundError:
+        print("File not found. Creating a new file...")
     return guitars
 
-# Function to display guitars
-def display_guitars(guitars):
-    for guitar in guitars:
-        print(guitar)
 
-# Function to sort guitars by year
-def sort_guitars_by_year(guitars):
-    guitars.sort()
+def save_guitars_to_file(guitars, file_name):
+    """Save guitars to a file."""
+    with open(file_name, 'w') as file:
+        for guitar in guitars:
+            file.write(f"{guitar.name},{guitar.year},{guitar.cost}\n")
 
-# Main function
-def main():
-    # Loading guitars from file
-    guitars = load_guitars_from_file('guitars.csv')
 
-    # Displaying unsorted guitars
-    print("Unsorted Guitars:")
-    display_guitars(guitars)
-
-    # Sorting guitars by year
-    sort_guitars_by_year(guitars)
-
-    # Displaying sorted guitars
-    print("\nSorted Guitars by Year (Oldest to Newest):")
-    display_guitars(guitars)
-
-# Executing main function
-main()
