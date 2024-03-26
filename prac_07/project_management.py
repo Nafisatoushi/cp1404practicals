@@ -11,3 +11,11 @@ def load_projects(filename="projects.txt"):
             name, start_date, priority, cost_estimate, completion_percentage = row
             projects.append(Project(name, start_date, int(priority), float(cost_estimate), int(completion_percentage)))
     return projects
+
+def main():
+    """Main function to manage projects."""
+    print("Welcome to Pythonic Project Management")
+    projects = load_projects()
+    print(f"Loaded {len(projects)} projects from projects.txt")
+
+main()
