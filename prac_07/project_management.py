@@ -51,3 +51,63 @@ def add_new_project(projects):
         print("New project added.")
     except ValueError:
         print("Invalid input format.")
+
+def update_project(projects):
+    display_projects(projects)
+    project_choice = input("Project choice: ")
+    try:
+        project_choice = int(project_choice)
+        if 0 <= project_choice < len(projects):
+            project = projects[project_choice]
+            new_completion_percentage = input("New Percentage: ")
+            if new_completion_percentage:
+                project.completion_percentage = int(new_completion_percentage)
+            new_priority = input("New Priority: ")
+            if new_priority:
+                project.priority = int(new_priority)
+            print("Project updated.")
+        else:
+            print("Invalid project choice.")
+    except ValueError:
+        print("Invalid input.")
+
+def main():
+    filename = 'projects.txt'
+    projects = load_projects_from_file(filename)
+    print(f"Welcome to Pythonic Project Management\nLoaded {len(projects)} projects from {filename}")
+    while True:
+        print("\n- (L)oad projects")
+        print("- (S)ave projects")
+        print("- (D)isplay projects")
+        print("- (F)ilter projects by date")
+        print("- (A)dd new project")
+        print("- (U)pdate project")
+        print("- (Q)uit")
+        choice = input(">>> ").lower()
+        if choice == 'l':
+            filename = input("Enter filename to load projects from: ")
+            projects = load_projects_from_file(filename)
+            print(f"Loaded {len(projects)} projects from {filename}")
+        elif choice == 's':
+            filename = input("Enter filename to save projects to: ")
+            save_projects_to_file(filename, projects)
+            print(f"Saved {len(projects)} projects to {filename}")
+        elif choice == 'd':
+            display_projects(projects)
+        elif choice == 'f':
+            filter_projects_by_date(projects)
+        elif choice == 'a':
+            add_new_project(projects)
+        elif choice == 'u':
+            update_project(projects)
+        elif choice == 'q':
+            save_choice = input("Would you like to save to projects.txt? (yes/no): ").lower()
+            if save_choice == 'yes':
+                save_projects_to_file('projects.txt', projects)
+                print(f"Saved {len(projects)} projects to projects.txt")
+            print("Thank you for using custom-built project management software.")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+main()
