@@ -2,6 +2,7 @@ import datetime
 from project import Project
 
 def load_projects_from_file(filename):
+    """Load projects from a file and return a list of Project objects."""
     projects = []
     with open(filename, 'r') as file:
         lines = file.readlines()[1:]  # Skip header line
@@ -11,6 +12,7 @@ def load_projects_from_file(filename):
     return projects
 
 def save_projects_to_file(filename, projects):
+    """Save projects to a file."""
     with open(filename, 'w') as file:
         file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")  # Header
         for project in projects:
@@ -18,6 +20,7 @@ def save_projects_to_file(filename, projects):
 
 
 def display_projects(projects):
+    """Display incomplete and completed projects."""
     incomplete_projects = [project for project in projects if project.completion_percentage < 100]
     completed_projects = [project for project in projects if project.completion_percentage == 100]
 
@@ -30,10 +33,11 @@ def display_projects(projects):
         print(f"  {project}")
 
 def filter_projects_by_date(projects):
+    """Filter projects by date."""
     date_str = input("Show projects that start after date (dd/mm/yyyy): ")
     try:
         date = datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
-        filtered_projects = [project for project in projects if project.start_date > date]
+        filtered_projects = [project for project in projects if project.start_date >= date]
         for project in sorted(filtered_projects, key=lambda x: x.start_date):
             print(f"  {project}")
     except ValueError:
@@ -46,7 +50,7 @@ def add_new_project(projects):
     date_string = input("Enter the start date (dd/mm/yyyy): ")
     date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
     priority = int(input("Priority: "))
-    cost_estimate = float(input("Cost estimate: "))
+    cost_estimate = float(input("Cost estimate: $"))
     completion_percentage = float(input("Enter the completion percentage: "))
 
     project = Project(name, date, priority, cost_estimate,completion_percentage)
@@ -83,6 +87,7 @@ def display_projects_with_numbers(projects):
 
 
 def main():
+    """main menu"""
     filename = 'projects.txt'
     projects = load_projects_from_file(filename)
     print(f"Welcome to Pythonic Project Management\nLoaded {len(projects)} projects from {filename}")
