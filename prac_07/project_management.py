@@ -42,25 +42,26 @@ def filter_projects_by_date(projects):
 
 def add_new_project(projects):
     """Add a new project to the list."""
-    name = input("Enter the name of the project: ")
+    name = input("Let's add a new project.\nName: ")
     date_string = input("Enter the start date (dd/mm/yyyy): ")
     date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-    print(f"That day is/was {date.strftime('%A')}")
-    priority = int(input("Enter the priority: "))
-    cost_estimate = float(input("Enter the cost estimate: "))
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
     completion_percentage = float(input("Enter the completion percentage: "))
 
-    project = Project(name, date, priority, cost_estimate, completion_percentage)
+    project = Project(name, date, priority, cost_estimate,completion_percentage)
     projects.append(project)
     print("Project added successfully.")
 
 def update_project(projects):
-    display_projects(projects)
+    """Update a project's completion percentage and priority."""
+    display_projects_with_numbers(projects)
     project_choice = input("Project choice: ")
     try:
         project_choice = int(project_choice)
         if 0 <= project_choice < len(projects):
             project = projects[project_choice]
+            print(project)
             new_completion_percentage = input("New Percentage: ")
             if new_completion_percentage:
                 project.completion_percentage = int(new_completion_percentage)
@@ -72,6 +73,14 @@ def update_project(projects):
             print("Invalid project choice.")
     except ValueError:
         print("Invalid input.")
+
+def display_projects_with_numbers(projects):
+    """Display the list of projects with numbers."""
+    print("Projects:")
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+
 
 def main():
     filename = 'projects.txt'
@@ -111,5 +120,6 @@ def main():
             break
         else:
             print("Invalid choice. Please select a valid option.")
+
 
 main()
