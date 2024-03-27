@@ -28,3 +28,26 @@ def display_projects(projects):
     print("Completed projects:")
     for project in sorted(completed_projects, key=lambda x: x.priority):
         print(f"  {project}")
+
+def filter_projects_by_date(projects):
+    date_str = input("Show projects that start after date (dd/mm/yyyy): ")
+    try:
+        date = datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
+        filtered_projects = [project for project in projects if project.start_date > date]
+        for project in sorted(filtered_projects, key=lambda x: x.start_date):
+            print(f"  {project}")
+    except ValueError:
+        print("Invalid date format. Please use the format dd/mm/yyyy.")
+
+def add_new_project(projects):
+    name = input("Name: ")
+    start_date_str = input("Start date (dd/mm/yyyy): ")
+    try:
+        start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
+        priority = int(input("Priority: "))
+        cost_estimate = float(input("Cost estimate: "))
+        completion_percentage = int(input("Percent complete: "))
+        projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
+        print("New project added.")
+    except ValueError:
+        print("Invalid input format.")
