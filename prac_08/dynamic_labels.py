@@ -19,13 +19,13 @@ class DynamicLabelsApp(App):
         self.root = Builder.load_file('dynamic_labels.kv')  # Load KV file
         self.create_labels()
         return self.root
-    def create_labels(self, layout):
+    def create_labels(self):
         """Create labels from data and add them to the GUI."""
         for name in self.names:
             # Create a label for each name
             temp_label = Label(text=name)
-            # Add the label to the layout widget
-            layout.add_widget(temp_label)
+            # Add the label to the "main" layout widget
+            self.root.ids.main.add_widget(temp_label)
 
 # Run the app
 DynamicLabelsApp().run()
