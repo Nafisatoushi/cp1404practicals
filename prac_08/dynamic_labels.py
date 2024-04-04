@@ -26,3 +26,10 @@ class DynamicLabelsApp(App):
             temp_label = Label(text=name)
             # Add the label to the "labels_box" layout widget
             self.root.ids.labels_box.add_widget(temp_label)
+
+        def clear_all(self):
+            """Clear all widgets that are children of the "labels_box" layout widget."""
+            self.root.ids.labels_box.clear_widgets()  # Remove all labels
+
+# Run the app
+DynamicLabelsApp().run()
