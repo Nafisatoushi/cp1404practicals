@@ -1,19 +1,4 @@
 BoxLayout:
-    orientation: 'vertical'
     BoxLayout:
         orientation: 'vertical'
-        # This layout will be populated with Label widgets in the app code
-        id: labels_box
-    Label:
-        size_hint_y: 0.1
-        text: app.status_text
-
-    BoxLayout:
-        orientation: 'horizontal'
-        size_hint_y: 0.2
-        Button:
-            text: "Create Labels"
-            on_press: app.create_labels()  # Calls create_labels() method when pressed
-        Button:
-            text: "Clear Labels"
-            on_press: app.clear_all()  # Calls clear_all() method when pressed
+        id: main
