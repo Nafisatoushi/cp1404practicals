@@ -12,3 +12,9 @@ class DynamicLabelsApp(App):
         super().__init__(**kwargs)
         # List of names
         self.names = ["Alice", "Bob", "Charlie", "David", "Emily"]
+
+    def build(self):
+        """Build the Kivy GUI."""
+        self.title = "Dynamic Labels"  # Set window title
+        self.root = Builder.load_file('dynamic_labels.kv')  # Load KV file
+        return self.root
