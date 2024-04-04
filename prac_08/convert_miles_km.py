@@ -22,3 +22,16 @@ class MilesConverterApp(App):
         value = self.get_validated_miles()
         result = value * MILES_TO_KM
         self.output_text = str(result)
+
+    def handle_increment(self, change):
+        """
+        handle up/down button press, update the text input with new value, call calculation function
+        :param change: the amount to change
+        """
+        value = self.get_validated_miles() + change
+        self.root.ids.input_miles.text = str(value)
+        self.handle_calculate()
+
+    def handle_update(self):
+        """Handle changes to the text input by updating the model from the view."""
+        self.output_text = self.root.ids.user_input.text
