@@ -1,5 +1,5 @@
 """Estimate time: 3hours
-actual time: """
+actual time: 5 hours"""
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import StringProperty
