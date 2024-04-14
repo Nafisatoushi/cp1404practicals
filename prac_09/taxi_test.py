@@ -1,9 +1,9 @@
-# taxi_test.py
+
 
 from prac_09.taxi import Taxi
 
 # Create a new taxi object
-my_taxi = Taxi("Prius 1", 100,1.23)
+my_taxi = Taxi("Prius 1", 100)
 
 # Drive the taxi 40 km
 my_taxi.drive(40)
