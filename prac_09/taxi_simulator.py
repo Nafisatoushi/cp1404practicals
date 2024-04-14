@@ -20,3 +20,18 @@ def main():
                 current_taxi = taxis[taxi_choice]
             except IndexError:
                 print("Invalid taxi choice")
+        elif menu_choice == "d":
+            if current_taxi:
+                current_taxi.start_fare()
+                distance_to_drive = float(input("Drive how far? "))
+                current_taxi.drive(distance_to_drive)
+                trip_cost = current_taxi.get_fare()
+                print(f"Your {current_taxi.name} trip cost you ${trip_cost:.2f}")
+                total_bill += trip_cost
+            else:
+                print("You need to choose a taxi before you can drive")
+        else:
+            print("Invalid option")
+        print(f"Bill to date: ${total_bill:.2f}")
+        print(MENU)
+        menu_choice = input(">>> ").lower()
