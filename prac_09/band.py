@@ -9,3 +9,10 @@ class Band:
     def add(self, musician):
         """Add a musician to the band."""
         self.musicians.append(musician)
+
+    def play(self):
+        """Show which musicians are playing and their instruments."""
+        output = []
+        for musician in self.musicians:
+            output.append(musician.play())
+        return "\n".join(output)
