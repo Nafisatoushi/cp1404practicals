@@ -5,3 +5,7 @@ class Band:
         """Initialize a Band with a name and an empty list of musicians."""
         self.name = name
         self.musicians = []
+
+    def add(self, musician):
+        """Add a musician to the band."""
+        self.musicians.append(musician)
