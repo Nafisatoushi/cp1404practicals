@@ -46,13 +46,16 @@ def run_tests():
     # using the value passed in or the default
     # You should test both of these
     test_car = Car(fuel=10)
+    assert test_car.fuel == 10, "Car does not set fuel correctly"
+    test_car = Car()
+    assert test_car.fuel == 0, "Car does not set default fuel correctly"
 
 
 run_tests()
 
 # TODO: 3. Uncomment the following line and run the doctests
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
-# doctest.testmod()
+doctest.testmod()
 
 # TODO: 4. Fix the failing is_long_word function
 # (don't change the tests, change the function!)
@@ -66,3 +69,22 @@ run_tests()
 # and one more you decide (one that is valid!)
 # test this and watch the tests fail
 # then write the body of the function so that the tests pass
+def format_phrase_as_sentence(phrase):
+    """
+    Format a phrase as a sentence, starting with a capital and ending with a single full stop.
+    >>> format_phrase_as_sentence('hello')
+    'Hello.'
+    >>> format_phrase_as_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> format_phrase_as_sentence('this is another phrase')
+    'This is another phrase.'
+    """
+    if not phrase:
+        return ""
+    formatted_phrase = phrase[0].upper() + phrase[1:]
+    if formatted_phrase[-1] != '.':
+        formatted_phrase += '.'
+    return formatted_phrase
+
+
+run_tests()
