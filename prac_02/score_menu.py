@@ -44,3 +44,16 @@ def print_result(score):
 def show_stars(score):
     """Show stars based on the given score."""
     print("Stars: " + '*' * int(score))
+
+def display_menu():
+    """Display the menu and get the user's choice."""
+    menu = """Menu:
+    (G)et a valid score
+    (P)rint result
+    (S)how stars
+    (Q)uit"""
+    print(menu)
+    return input("Enter your choice: ").upper()
+
+
+main()
