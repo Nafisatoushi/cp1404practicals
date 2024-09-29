@@ -1,5 +1,5 @@
 """
-CP1404 - prac_01
+CP1404 - prac_02
 temperature conversion
 """
 
