@@ -40,3 +40,7 @@ def print_result(score):
         print("Passable")
     else:
         print("Bad")
+
+def show_stars(score):
+    """Show stars based on the given score."""
+    print("Stars: " + '*' * int(score))
