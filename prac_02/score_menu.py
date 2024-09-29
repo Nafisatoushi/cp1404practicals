@@ -21,3 +21,11 @@ def main():
         choice = display_menu()
 
     print("Farewell! Thanks for using the Score Menu.")
+
+def get_valid_score():
+    """Get a valid score from the user."""
+    score = float(input("Enter a valid score (0-100): "))
+    while not (0 <= score <= 100):
+        print("Invalid score. Please enter a score between 0 and 100.")
+        score = float(input("Enter a valid score (0-100): "))
+    return score
