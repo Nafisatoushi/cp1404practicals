@@ -1,17 +1,26 @@
-def get_password(min_length):
-    password = input("Enter a password: ")
-    if len(password) >= min_length:
-        return password
-    else:
-        print(f"Password must be at least {min_length} characters long. Try again.")
-
-def print_password_asterisks(password):
-    print("*" * len(password))
-
+"""
+CP1404 - Practical 2
+Get a password with minimum length and display asterisks
+"""
+MIN_LENGTH=10
 def main():
-    min_password_length = 8  # You can set the minimum length as needed
-    user_password = get_password(min_password_length)
-    print("Password Accepted! Here is the visual representation:")
-    print_password_asterisks(user_password)
+    """Get and print password using functions."""
+    password = get_password(MIN_LENGTH)
+    print_asterisks(password)
+
+
+def get_password(minimum_length):
+    """Get password, ensuring it meets the minimum_length requirement."""
+    password = input(f"Enter password of at least {minimum_length} characters: ")
+    while len(password) < minimum_length:
+        print("Password too short")
+        password = input(f"Enter password of at least {minimum_length} characters: ")
+    return password
+
+
+def print_asterisks(sequence):
+    """Print as many asterisks as there are characters in the passed-in sequence."""
+    print('*' * len(sequence))
+
 
 main()
