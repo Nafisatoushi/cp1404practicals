@@ -8,6 +8,6 @@ while not is_finished:
     try:
         result = int(input("Enter a valid integer: "))
         break   # add a break statement
-    except:  # TODO - add the exception you want to catch after except
+    except ValueError:  # specifying the exception type
         print("Please enter a valid integer.")
 print("Valid result is:", result)
