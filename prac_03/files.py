@@ -18,5 +18,12 @@ with open("numbers.txt", "r") as in_file:
     number2 = int(in_file.readline())
 print("The sum of the first two numbers is:", number1 + number2)
 
+# Task 4
+total_all_numbers = 0
+with open("numbers.txt", "r") as in_file:
+    for line in in_file:
+        number = int(line)
+        total_all_numbers += number
 
+print("The total for all numbers is:", total_all_numbers)
 
