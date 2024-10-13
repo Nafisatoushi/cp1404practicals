@@ -13,3 +13,19 @@ def main():
     print(f"The average of the numbers is {sum(numbers) / len(numbers)}")
 
 main()
+
+#2
+def main():
+    # List of authorized usernames
+    usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
+                 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
+# Ask the user for their username
+    user_input = input("Enter your username: ")
+
+    # Check if the entered username is in the list of authorized usernames
+    if user_input in usernames:
+        print("Access granted")
+    else:
+        print("Access denied")
+
+main()
