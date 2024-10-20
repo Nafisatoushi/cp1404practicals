@@ -8,3 +8,16 @@ def read_csv(filename):
         for row in reader:
             data.append(row)
     return data
+
+def process_data(data):
+    champions = {}
+    countries = set()
+    for row in data:
+        champion = row[2]
+        country = row[1]
+        if champion in champions:
+            champions[champion] += 1
+        else:
+            champions[champion] = 1
+        countries.add(country)
+    return champions, sorted(countries)
