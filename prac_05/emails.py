@@ -1,3 +1,9 @@
+"""
+email
+Estimate: 20 minutes
+Actual:   40 minutes
+"""
+
 def main():
     user_data = {}
     email = input("Email: ")
@@ -22,3 +28,11 @@ def main():
     for email, name in user_data.items():
         print(f"{name} ({email})")
 
+
+def extract_name(email):
+    username = email.split('@')[0]
+    # Capitalize first letter of each word in the username
+    name = ' '.join(part.title() for part in username.split('.'))
+    return name
+
+main()
