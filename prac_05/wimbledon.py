@@ -21,3 +21,22 @@ def process_data(data):
             champions[champion] = 1
         countries.add(country)
     return champions, sorted(countries)
+
+def display_champions(champions):
+    print("Wimbledon Champions:")
+    for champion, wins in champions.items():
+        print(f"{champion} {wins}")
+
+def display_countries(countries):
+    print("\nThese", len(countries), "countries have won Wimbledon:")
+    print(", ".join(countries))
+
+def main():
+    filename = "wimbledon.csv"
+    data = read_csv(filename)
+    champions, countries = process_data(data)
+    display_champions(champions)
+    display_countries(countries)
+
+
+main()
