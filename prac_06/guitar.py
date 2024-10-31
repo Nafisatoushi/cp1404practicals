@@ -1,3 +1,6 @@
+"""cp1404practicals-guitar
+Estimate: 40 minutes
+Actual:   60 minutes"""
 class Guitar:
     """Represent a Guitar object."""
     def __init__(self, name="", year=0, cost=0):
