@@ -1,7 +1,9 @@
 """
-CP1404/CP5632 Practical
+CP1404
 File and class example - opens/reads a file, stores in objects of custom class
 (contains multiple versions for demonstration: using csv and namedtuple)
+Estimate time: 30Mins
+Actual time: 40 Mins
 """
 
 import csv
