@@ -40,5 +40,23 @@ def main():
     for guitar in guitars:
         print(guitar)
 
+# Get details of new guitars from the user
+    num_new_guitars = int(input("How many new guitars do you want to add? "))
+    for i in range(num_new_guitars):
+        print(f"\nEntering details for Guitar #{i + 1}:")
+        new_guitar = get_new_guitar()
+        guitars.append(new_guitar)
+
+    # Save guitars to file
+    save_guitars_to_file(guitars, 'guitars.csv')
+    print("\nNew guitars saved to file.")
+
+    # Display all guitars after adding new ones
+    guitars.sort()
+    print("\nAll Guitars:")
+    for guitar in guitars:
+        print(guitar)
+
+
 
 main()
