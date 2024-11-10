@@ -1,3 +1,5 @@
+"""Estimate time: 30Mins
+Actual time:40 Mins"""
 # Importing necessary classes and modules
 from guitar import Guitar
 
