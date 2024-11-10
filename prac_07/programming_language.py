@@ -19,7 +19,6 @@ class ProgrammingLanguage:
         """Return string representation of a ProgrammingLanguage."""
         return f"{self.name}, {self.typing} Typing, Reflection={self.reflection}, " \
                f"Pointer Arithmetic={self.pointer_arithmetic}, First appeared in {self.year}"
-
     def is_dynamic(self):
         """Determine if language is dynamically typed."""
         return self.typing == "Dynamic"
@@ -27,9 +26,9 @@ class ProgrammingLanguage:
 
 def run_tests():
     """Run simple tests/demos on ProgrammingLanguage class."""
-    ruby = ProgrammingLanguage("Ruby", "Dynamic", True, 1995)
-    python = ProgrammingLanguage("Python", "Dynamic", True, 1991)
-    visual_basic = ProgrammingLanguage("Visual Basic", "Static", False, 1991)
+    ruby = ProgrammingLanguage("Ruby", "Dynamic", True, 1995, False)
+    python = ProgrammingLanguage("Python", "Dynamic", True, 1991, True)
+    visual_basic = ProgrammingLanguage("Visual Basic", "Static", False, 1991, False)
 
     languages = [ruby, python, visual_basic]
     print(python)
