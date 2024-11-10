@@ -1,5 +1,5 @@
 """Estimate time: 40Mins
-Actual time:"""
+Actual time:1 hour"""
 import datetime
 from project import Project
 

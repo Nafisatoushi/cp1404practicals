@@ -17,6 +17,10 @@ class Project:
         """Compare projects by priority for sorting."""
         return self.priority < other.priority
 
+    def is_complete(self):
+        """Check if the project is complete."""
+        return self.completion_percentage == 100
+
     def to_string(self):
         """utility/helper method"""
         """Convert a Project object to a string for saving."""
