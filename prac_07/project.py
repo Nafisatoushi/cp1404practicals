@@ -13,6 +13,9 @@ class Project:
                 f"priority {self.priority}, estimate: ${self.cost_estimate:.2f}, "
                 f"completion: {self.completion_percentage}%")
 
+    def __lt__(self, other):
+        """Compare projects by priority for sorting."""
+        return self.priority < other.priority
 
     def to_string(self):
         """utility/helper method"""
