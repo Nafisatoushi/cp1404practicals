@@ -1,6 +1,6 @@
 """Estimate time: 40Mins
 Actual time:"""
-
+import datetime
 from project import Project
 
 def load_projects_from_file(filename):
@@ -18,7 +18,25 @@ def save_projects_to_file(filename, projects):
     with open(filename, 'w') as file:
         file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")  # Header
         for project in projects:
-            file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
+            file.write(project.to_string() + '\n')
+
+def display_projects(projects):
+    """Display incomplete and completed projects."""
+    incomplete_projects = [project for project in projects if not project.is_complete()]
+    completed_projects = [project for project in projects if project.is_complete()]
+
+    incomplete_projects.sort()
+    completed_projects.sort()
+
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(f"  {project}")
+
+    print("\nCompleted projects:")
+    for project in completed_projects:
+        print(f"  {project}")
+
+
 def main():
     """main menu"""
     filename = 'projects.txt'
