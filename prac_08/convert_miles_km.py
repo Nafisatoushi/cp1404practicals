@@ -30,6 +30,24 @@ class MilesConverterApp(App):
         self.root.ids.input_miles.text = str(value)
         self.handle_calculate()
 
+    def handle_update(self):
+        """Handle changes to the text input by updating the model from the view."""
+        self.output_text = self.root.ids.user_input.text
+    def handle_update(self):
+        """Handle changes to the text input by updating the model from the view."""
+        self.output_text = self.root.ids.user_input.text
 
+    def get_validated_miles(self):
+            """
+            get text input from text entry widget, convert to float
+            :return: 0 if error, float version of text if valid
+            """
+            try:
+                value = float(self.root.ids.input_miles.text)
+                return value
+            except ValueError:
+                return 0
+
+MilesConverterApp().run()
 
 
