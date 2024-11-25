@@ -10,3 +10,7 @@ def main():
     current_taxi = None  #default starting value
     print("Let's drive!")
     print(MENU)
+
+def display_taxis(taxis):
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
