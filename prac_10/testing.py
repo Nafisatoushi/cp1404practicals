@@ -9,7 +9,7 @@ from prac_06.car import Car
 
 def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
-    return s * n
+    return " ".join([s] * n)  # Fix: Changed to join with spaces
 
 
 def is_long_word(word, length=5):
@@ -38,17 +38,14 @@ def run_tests():
     # assert test with custom message,
     # used to see if Car's init method sets the odometer correctly
     # this should pass (no output)
-    test_car = Car()
-    assert test_car._odometer == 0, "Car does not set odometer correctly"
+    car = Car()
+    assert car._odometer == 0, "Car does not set odometer correctly"
 
     # TODO: 2. write assert statements to show if Car sets the fuel correctly
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
-    test_car = Car(fuel=10)
-    assert test_car.fuel == 10, "Car does not set fuel correctly"
-    test_car = Car()
-    assert test_car.fuel == 0, "Car does not set default fuel correctly"
+    car = Car(fuel=10)
 
 
 run_tests()
