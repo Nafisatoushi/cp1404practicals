@@ -69,3 +69,22 @@ doctest.testmod()
 # and one more that you decide is a useful test.
 # Run your doctests and watch the tests fail.
 # Then write the body of the function so that the tests pass.
+def format_phrase_as_sentence(phrase):
+    """
+    Format a phrase as a sentence, starting with a capital and ending with a single full stop.
+    >>> format_phrase_as_sentence('hello')
+    'Hello.'
+    >>> format_phrase_as_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> format_phrase_as_sentence('this is another phrase')
+    'This is another phrase.'
+    """
+    if not phrase:
+        return ""
+    formatted_phrase = phrase[0].upper() + phrase[1:]
+    if formatted_phrase[-1] != '.':
+        formatted_phrase += '.'
+    return formatted_phrase
+
+
+run_tests()
